@@ -12,11 +12,11 @@ import (
 )
 
 type ParseReq struct {
-	Filepath string `json:"filepath"`
+	Cert string `json:"cert"`
 }
 
 func Parse(req *ParseReq) string {
-	cert, err := os.ReadFile(req.Filepath)
+	cert, err := os.ReadFile(req.Cert)
 	if err != nil {
 		return "error#" + err.Error()
 	}

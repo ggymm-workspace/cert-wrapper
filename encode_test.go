@@ -3,7 +3,8 @@ package main
 import "testing"
 
 func Test_Base64Encode(t *testing.T) {
-	t.Log(encode([]byte(`{"filepath":"cert/certificate.pem"}`)))
+	t.Log(encode([]byte(`{"country":"CN","Organization":"CPO","CommonName":"JX_CB_097"}`)))
+	t.Log(encode([]byte(`{"cert":"cert/certificate.pem"}`)))
 }
 
 func Test_Base64Decode(t *testing.T) {

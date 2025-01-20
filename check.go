@@ -15,6 +15,8 @@ func Check(req *CheckReq) string {
 	if err != nil {
 		return "error#" + err.Error()
 	}
+
+	// 解析证书
 	block, _ := pem.Decode(cert)
 	if block == nil || block.Type != "CERTIFICATE" {
 		return "error#certificate data is not a valid PEM block"

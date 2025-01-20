@@ -6,7 +6,7 @@ import (
 
 func Test_Parse(t *testing.T) {
 	req := &ParseReq{
-		Filepath: "cert/certificate.pem",
+		Cert: "cert/certificate.pem",
 	}
 	resp := Parse(req)
 	t.Logf("resp: %v", resp)

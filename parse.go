@@ -46,7 +46,7 @@ func Parse(req *ParseReq) string {
 	keyHex := sha256.Sum256(x509.MarshalPKCS1PublicKey(public))
 
 	// 返回结果
-	return fmt.Sprintf("success#%s|%s|%s|%x",
+	return fmt.Sprintf("%s|%s|%s|%x",
 		"SHA256",
 		hex.EncodeToString(nameHex[:]),
 		hex.EncodeToString(keyHex[:]),

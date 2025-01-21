@@ -6,7 +6,6 @@ import (
 	"crypto/sha256"
 	"crypto/x509"
 	"encoding/pem"
-	"fmt"
 	"os"
 )
 
@@ -43,5 +42,5 @@ func Signature(req *SignatureReq) string {
 	if err != nil {
 		return "error#" + err.Error()
 	}
-	return fmt.Sprintf("success#%s", encode(signature))
+	return encode(signature)
 }

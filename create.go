@@ -13,6 +13,8 @@ import (
 )
 
 type CreateReq struct {
+	Output string `json:"output"`
+
 	Country      string `json:"country"`
 	Organization string `json:"organization"`
 	CommonName   string `json:"common_name"`
@@ -53,7 +55,7 @@ func Create(req *CreateReq) string {
 	}
 
 	// 保存私钥
-	key, err := os.Create(filepath.Join(certRoot, "private_key.pem"))
+	key, err := os.Create(filepath.Join(req.Output, "private_key.pem"))
 	if err != nil {
 		return "error#" + err.Error()
 	}
@@ -66,14 +68,15 @@ func Create(req *CreateReq) string {
 	}
 
 	// 保存证书
-	cert, err := os.Create(filepath.Join(certRoot, "certificate.pem"))
+	cert, err := os.Create(filepath.Join(req.Output, "certificate.pem"))
 	if err != nil {
 		return "error#" + err.Error()
 	}
 	defer func() {
 		_ = cert.Close()
 	}()
-	if err := pem.Encode(cert, &pem.Block{Type: "CERTIFICATE", Bytes: certificate}); err != nil {
+	err = pem.Encode(cert, &pem.Block{Type: "CERTIFICATE", Bytes: certificate})
+	if err != nil {
 		return "error#" + err.Error()
 	}
 	return "success"

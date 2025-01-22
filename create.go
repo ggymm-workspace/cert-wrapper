@@ -55,7 +55,7 @@ func Create(req *CreateReq) string {
 	}
 
 	// 保存私钥
-	key, err := os.Create(filepath.Join(req.Output, "private_key.pem"))
+	key, err := os.Create(filepath.Join(req.Output, "private.pem"))
 	if err != nil {
 		return "error#" + err.Error()
 	}
@@ -68,7 +68,7 @@ func Create(req *CreateReq) string {
 	}
 
 	// 保存证书
-	cert, err := os.Create(filepath.Join(req.Output, "certificate.pem"))
+	cert, err := os.Create(filepath.Join(req.Output, "ca.pem"))
 	if err != nil {
 		return "error#" + err.Error()
 	}
